@@ -84,6 +84,8 @@ export const convertBase10ToArrayOfDays = () => {
  * repeats 3 times a week.
  *
  * Write a test case for this as well.
+ *
+ * You are allowed to use third-party date libraries like moment or date-fns (recommended).
  */
 
 export const getNextPushNotifications = () => {
