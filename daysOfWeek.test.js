@@ -39,7 +39,7 @@ describe('Convert base 10 representation of days of week into strings with abbre
 
   it('should convert daily recurrences into list of each day of the week', () => {
     const days = 128;
-    const expectedDays = [ 'M', 'T', 'W', 'Th', 'F', 'S', 'Su'];
+    const expectedDays = [ 'M', 'T', 'W', 'Th', 'F', 'S', 'Su' ];
     const convertedDays = convertBase10ToArrayOfDays(days);
 
     expect(convertedDays).toEqual(expectedDays);
