@@ -62,6 +62,8 @@ const goal = {
   originalDueDate: '2018-01-24T23:00:00.00Z',
   recurrenceDays: 21
 };
+console.log(goal, "GOAL")
+
 
 // You can change the body and parameter list of these functions.
 export const convertBase10ToArrayOfIndexes = () => {
