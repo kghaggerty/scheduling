@@ -66,56 +66,56 @@ const goal = {
 
 // You can change the body and parameter list of these functions.
 export const convertBase10ToArrayOfIndexes = (recurrenceDays) => {
-  
-    let indexDays = []
+
+  let indexDays = []
   //Numbers of the week
-    let numbersOfWeek = [1, 2, 3, 4, 5, 6, 0];
-    //convert 21 to binary
-    let reverseBinary = []
-    let binaryConvert = recurrenceDays.toString(2);
-    let stringConvert = binaryConvert.split('')
-    if (stringConvert.length <= 7) {
-        reverseBinary.push(stringConvert.reverse());
-    } else if (stringConvert.length === 8) {
-        stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
+  let numbersOfWeek = [1, 2, 3, 4, 5, 6, 0];
+  //convert 21 to binary
+  let reverseBinary = []
+  let binaryConvert = recurrenceDays.toString(2);
+  let stringConvert = binaryConvert.split('')
+  if (stringConvert.length <= 7) {
+    reverseBinary.push(stringConvert.reverse());
+  } else if (stringConvert.length === 8) {
+    stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
+  }
+  do {
+    stringConvert.push('0')
+  } while (stringConvert.length < 7);
+
+  for (let i = 0; i < stringConvert.length; i++) {
+    const element = stringConvert[i];
+    if (element === '1') {
+      indexDays.push(numbersOfWeek[i])
+
     }
-    do {
-        stringConvert.push('0')
-    } while (stringConvert.length < 7);
-    
-    for (let i = 0; i < stringConvert.length; i++) {
-        const element = stringConvert[i];
-        if (element === '1') {
-          indexDays.push(numbersOfWeek[i])
-            
-        } 
-    }
-    return indexDays;
+  }
+  return indexDays;
 };
 
 export const convertBase10ToArrayOfDays = (days) => {
-    let convertedDays = []
-    let daysOfWeek = ['M', 'T', 'W', 'Th', 'F', 'S', 'Su'];
-    //convert number to binary
-    let reverseBinary = []
-    let binaryConvert = days.toString(2);
-    let stringConvert = binaryConvert.split('')
-    if (stringConvert.length <= 7) {
-      reverseBinary.push(stringConvert.reverse());
+  let convertedDays = []
+  let daysOfWeek = ['M', 'T', 'W', 'Th', 'F', 'S', 'Su'];
+  //convert number to binary
+  let reverseBinary = []
+  let binaryConvert = days.toString(2);
+  let stringConvert = binaryConvert.split('')
+  if (stringConvert.length <= 7) {
+    reverseBinary.push(stringConvert.reverse());
   } else if (stringConvert.length === 8) {
-      stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
+    stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
   }
-      do {
-          stringConvert.push('0')
-      } while (stringConvert.length < 7);
-  
+  do {
+    stringConvert.push('0')
+  } while (stringConvert.length < 7);
+
   for (let i = 0; i < stringConvert.length; i++) {
-      const element = stringConvert[i];
-      if (element === '1') {
-        convertedDays.push(daysOfWeek[i])
-      } 
+    const element = stringConvert[i];
+    if (element === '1') {
+      convertedDays.push(daysOfWeek[i])
+    }
   }
-    return convertedDays;
+  return convertedDays;
 };
 
 /**
