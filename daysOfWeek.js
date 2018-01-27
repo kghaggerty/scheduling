@@ -60,18 +60,62 @@ const goal = {
   description: 'Meditate three times a week, on Monday, Wednesday, and Friday',
   goalId: 710,
   originalDueDate: '2018-01-24T23:00:00.00Z',
-  recurrenceDays: 21
+  recurrenceDays: 0
 };
-console.log(goal, "GOAL")
 
 
 // You can change the body and parameter list of these functions.
-export const convertBase10ToArrayOfIndexes = () => {
-
+export const convertBase10ToArrayOfIndexes = (recurrenceDays) => {
+  
+    let indexDays = []
+  //Numbers of the week
+    let numbersOfWeek = [1, 2, 3, 4, 5, 6, 0];
+    //convert 21 to binary
+    let reverseBinary = []
+    let binaryConvert = recurrenceDays.toString(2);
+    let stringConvert = binaryConvert.split('')
+    if (stringConvert.length <= 7) {
+        reverseBinary.push(stringConvert.reverse());
+    } else if (stringConvert.length === 8) {
+        stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
+    }
+        do {
+            stringConvert.push('0')
+        } while (stringConvert.length < 7);
+    
+    for (let i = 0; i < stringConvert.length; i++) {
+        const element = stringConvert[i];
+        if (element === '1') {
+          indexDays.push(numbersOfWeek[i])
+            
+        } 
+    }
+    return indexDays;
 };
 
-export const convertBase10ToArrayOfDays = () => {
-
+export const convertBase10ToArrayOfDays = (days) => {
+    let convertedDays = []
+    let daysOfWeek = ['M', 'T', 'W', 'Th', 'F', 'S', 'Su'];
+    //convert number to binary
+    let reverseBinary = []
+    let binaryConvert = days.toString(2);
+    let stringConvert = binaryConvert.split('')
+    if (stringConvert.length <= 7) {
+      reverseBinary.push(stringConvert.reverse());
+  } else if (stringConvert.length === 8) {
+      stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
+  }
+      do {
+          stringConvert.push('0')
+      } while (stringConvert.length < 7);
+  
+  for (let i = 0; i < stringConvert.length; i++) {
+      const element = stringConvert[i];
+      if (element === '1') {
+        convertedDays.push(daysOfWeek[i])
+      } 
+  }
+    return convertedDays;
 };
 
 /**
@@ -90,7 +134,7 @@ export const convertBase10ToArrayOfDays = () => {
  * You are allowed to use third-party date libraries like moment or date-fns (recommended).
  */
 
-export const getNextPushNotifications = () => {
+// export const getNextPushNotifications = () => {
 
-};
+// };
 

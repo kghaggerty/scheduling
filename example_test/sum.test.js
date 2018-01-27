@@ -1,5 +1,5 @@
-// Uncomment this file to see an example test.
-//
+//Uncomment this file to see an example test.
+
 // const sum = require('./sum');
 
 // test('adds 1 + 2 to equal 3', () => {
