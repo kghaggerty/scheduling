@@ -16,7 +16,7 @@ describe('Convert base 10 representation of days of week into list of indexes of
     const recurrenceDays = 21;
     const indexDays = convertBase10ToArrayOfIndexes(recurrenceDays);
 
-    expect(recurrenceDays).toEqual([ 1, 3, 5 ]);
+    expect(indexDays).toEqual([ 1, 3, 5 ]);
   });
 
   it('should be able to find the indexes for goals that repeat daily', () => {

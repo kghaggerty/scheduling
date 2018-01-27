@@ -60,7 +60,7 @@ const goal = {
   description: 'Meditate three times a week, on Monday, Wednesday, and Friday',
   goalId: 710,
   originalDueDate: '2018-01-24T23:00:00.00Z',
-  recurrenceDays: 0
+  recurrenceDays: 21
 };
 
 
@@ -79,9 +79,9 @@ export const convertBase10ToArrayOfIndexes = (recurrenceDays) => {
     } else if (stringConvert.length === 8) {
         stringConvert = ['1', '1', '1', '1', '1', '1', '1'];
     }
-        do {
-            stringConvert.push('0')
-        } while (stringConvert.length < 7);
+    do {
+        stringConvert.push('0')
+    } while (stringConvert.length < 7);
     
     for (let i = 0; i < stringConvert.length; i++) {
         const element = stringConvert[i];
