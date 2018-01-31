@@ -42,12 +42,16 @@
  * representing which days of the week the goal repeats on.
  *
  * E.g.: input 21 --> output [ 1, 3, 5 ]
+ * [2, 4, 5]
+ * [3, 5, 6, 7]
  *
  * The second function should accept the reccurenceDays value as input and output an array of
  * strings for each day the goal repeats on.
  *
  * E.g.: input 21 --> output [ 'M', 'W', 'F' ]
  */
+var moment = require('moment');
+moment().format();
 
 const goal = {
   activeDate: '2018-01-23T22:10:57.00Z',
@@ -62,7 +66,6 @@ const goal = {
   originalDueDate: '2018-01-24T23:00:00.00Z',
   recurrenceDays: 21
 };
-
 
 // You can change the body and parameter list of these functions.
 export const convertBase10ToArrayOfIndexes = (recurrenceDays) => {
@@ -132,9 +135,17 @@ export const convertBase10ToArrayOfDays = (days) => {
  * Write a test case for this as well.
  *
  * You are allowed to use third-party date libraries like moment or date-fns (recommended).
- */
+*/
 
-// export const getNextPushNotifications = () => {
 
-// };
+export const getNextPushNotifications = (recurrenceDays) => {
+  let pushTime = recurrenceDays.map(theDay => {
+    if (moment().day(theDay) < moment().isoWeekday(7)) {
+        return moment().add('day', 7).day(theDay).subtract(15, 'seconds').toDate() 
+    } else {
+        return moment().day(theDay).subtract(15, 'seconds').toDate()
+    }
+  })
+  return pushTime
+};
 

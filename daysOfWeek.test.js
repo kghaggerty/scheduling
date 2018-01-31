@@ -1,7 +1,11 @@
 import {
   convertBase10ToArrayOfIndexes,
-  convertBase10ToArrayOfDays
+  convertBase10ToArrayOfDays,
+  getNextPushNotifications
 } from './daysOfWeek';
+
+var moment = require('moment');
+moment().format();
 
 describe('Convert base 10 representation of days of week into list of indexes of each day', () => {
 
@@ -51,5 +55,15 @@ describe('Convert base 10 representation of days of week into strings with abbre
     const convertedDays = convertBase10ToArrayOfDays(days);
 
     expect(convertedDays).toEqual(expectedDays);
+  });
+});
+
+describe('Send correct push notifcation time to user when they select which days they want reminders', () => {
+
+  it('should send push notifcations for multiple times in a week, 15 minutes prior to the due time', () => {
+    const recurrenceDays = ['1', '3', '5'];
+    const pushTime = getNextPushNotifications(recurrenceDays);
+
+    expect(pushTime).toEqual([ moment().add('day', 7).day(1), moment().day(3), moment().day(5)]);
   });
 });
