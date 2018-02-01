@@ -139,15 +139,15 @@ export const convertBase10ToArrayOfDays = (days) => {
 
 
 export const getNextPushNotifications = (recurrenceDays) => {
+  //get correct format to subract 15 minutes
+  let subTime = moment().format(goal.originalDueDate, "hh:mm")
+  let finalTime = moment(subTime).subtract('minutes', 15).format("H:mmz")
   //Map new timse to an array
   let pushTime = recurrenceDays.map(theDay => {
-    //If date of first day is less than Sunday's date, then start notifcations for next week
     if (moment().day(theDay) < moment().isoWeekday(7)) {
-      //Slice time off of goal date, then add it to the notifcation date
-        return moment().add(7,'day').day(theDay).format('YYYY-MM-DD').concat("T" + goal.originalDueDate.slice(11,19) + "Z")
+        return moment().add('days', 7).day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
     } else {
-       //Slice time off of goal date, then add it to the notifcation date
-        return moment().day(theDay).format('YYYY-MM-DD').concat("T" + goal.originalDueDate.slice(11,19) + "Z")
+        return moment().day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
     }
   })
   return pushTime
