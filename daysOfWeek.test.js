@@ -64,6 +64,20 @@ describe('Send correct push notifcation time to user when they select which days
     const recurrenceDays = ['1', '3', '5'];
     const pushTime = getNextPushNotifications(recurrenceDays);
 
-    expect(pushTime).toEqual([ moment().add('day', 7).day(1), moment().day(3), moment().day(5)]);
+    expect(pushTime).toEqual(['2018-02-05T23:00:00Z', '2018-02-07T23:00:00Z', '2018-02-09T23:00:00Z']);
+  });
+
+  it('should send push notifcations for next Monday if they are currently setting the date on a Monday', () => {
+    const recurrenceDays = ['1'];
+    const pushTime = getNextPushNotifications(recurrenceDays);
+
+    expect(pushTime).toEqual(['2018-02-05T23:00:00Z']);
+  });
+
+  it('should send push notifcations for multiple times a week, where Sunday equals the upcoming Sunday', () => {
+    const recurrenceDays = ['5', '6', '0'];
+    const pushTime = getNextPushNotifications(recurrenceDays);
+
+    expect(pushTime).toEqual(['2018-02-09T23:00:00Z', '2018-02-10T23:00:00Z', '2018-02-04T23:00:00Z']);
   });
 });
