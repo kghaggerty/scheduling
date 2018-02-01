@@ -144,11 +144,11 @@ export const getNextPushNotifications = (recurrenceDays) => {
   let finalTime = moment(subTime).subtract('minutes', 15).format("H:mmz")
   //Map new timse to an array
   let pushTime = recurrenceDays.map(theDay => {
-    if (moment().day(theDay) < moment().isoWeekday(7)) {
-        return moment().add('days', 7).day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
-    } else {
-        return moment().day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
-    }
+    return (
+      moment().day(theDay) < moment().isoWeekday(7) ? 
+      moment().add('days', 7).day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
+      :moment().day(theDay).format('YYYY-MM-DD').concat("T" + finalTime + ":00Z")
+      )
   })
   return pushTime
 };
