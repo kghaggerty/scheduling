@@ -142,7 +142,7 @@ export const getNextPushNotifications = (recurrenceDays) => {
   //get correct format to subract 15 minutes
   let subTime = moment().format(goal.originalDueDate, "hh:mm")
   let finalTime = moment(subTime).subtract('minutes', 15).format("H:mmz")
-  //Map new timse to an array
+  //Map new times to an array
   let pushTime = recurrenceDays.map(theDay => {
     return (
       moment().day(theDay) < moment().isoWeekday(7) ? 
